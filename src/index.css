@@ -183,10 +183,16 @@ img.hide {
 
 .details {
   height: 100%;
-  background: blue;
+  background: rgb(218, 218, 218);
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .details ul {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
 }

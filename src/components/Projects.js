@@ -136,8 +136,8 @@ const Projects = () => {
       target.className = 'hide'
       target.parentNode.childNodes[1].className = 'details'
     } else if (target.nodeName.toLowerCase() === 'a') {
-        target.childNodes[0].className = 'hide'
-        target.childNodes[1].className = 'details'
+      target.childNodes[0].className = 'hide'
+      target.childNodes[1].className = 'details'
     }
     return
   }
@@ -155,8 +155,8 @@ const Projects = () => {
       target.childNodes[0].className = ''
       target.childNodes[1].className = 'details hide'
     } else {
-        target.parentNode.childNodes[0].className = ''
-        target.parentNode.childNodes[1].className = 'details hide'
+      target.parentNode.childNodes[0].className = ''
+      target.parentNode.childNodes[1].className = 'details hide'
     }
     return
   }
@@ -168,8 +168,8 @@ const Projects = () => {
         <p>Techs Used:</p>
         <ul className="project-techs">
           {project.technologies.map((tech) => {
-            return <li>{tech} </li>
-          })}
+              return <li>{tech} </li>
+            })}
         </ul>
       </div>
     )
