@@ -135,7 +135,7 @@ code {
   overflow: hidden;
 }
 
-.projects.container ul {
+.projects.container .project.list {
   border-radius: 10px;
   width: 70vw;
   display: grid;
@@ -144,13 +144,13 @@ code {
   height: 80vh;
 }
 
-.projects.container ul li {
+.projects.container .project.list .projects {
   display: flex;
   justify-content: center;
   height: 40vh;
 }
 
-.projects.container ul li a {
+.projects.container .project.list .projects a {
   height: 100%;
   width: 80%;
 }
@@ -174,4 +174,17 @@ img {
 
 img.hide {
   display: none;
+}
+
+.details.hide {
+  display: none;
+}
+
+.details ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.details ul li {
+  height: 25%;
 }
