@@ -135,6 +135,9 @@ const Projects = () => {
     if (target.parentNode.nodeName.toLowerCase() === 'a') {
       target.className = 'hide'
       target.parentNode.childNodes[1].className = 'details'
+    } else if (target.nodeName.toLowerCase() === 'a') {
+        target.childNodes[0].className = 'hide'
+        target.childNodes[1].className = 'details'
     }
     return
   }
@@ -146,12 +149,14 @@ const Projects = () => {
     } else if (
       target.parentNode.parentNode.parentNode.nodeName.toLowerCase() === 'a'
     ) {
-      console.log(target.parentNode.parentNode)
       target.parentNode.parentNode.className = 'details hide'
       target.parentNode.parentNode.parentNode.childNodes[0].className = ''
-    } else if (target.nodeName === 'a'){
-        target.childNodes[0].className = ''
-        target.childNodes[1].className = 'details hide'
+    } else if (target.nodeName.toLowerCase() === 'a') {
+      target.childNodes[0].className = ''
+      target.childNodes[1].className = 'details hide'
+    } else {
+        target.parentNode.childNodes[0].className = ''
+        target.parentNode.childNodes[1].className = 'details hide'
     }
     return
   }
@@ -161,9 +166,9 @@ const Projects = () => {
       <div className="details hide">
         <h3>{project.title}</h3>
         <p>Techs Used:</p>
-        <ul className='project-techs'>
-          {project.technologies.map(tech => {
-              return <li>{tech} </li>
+        <ul className="project-techs">
+          {project.technologies.map((tech) => {
+            return <li>{tech} </li>
           })}
         </ul>
       </div>
@@ -176,7 +181,7 @@ const Projects = () => {
       <ul className="project list">
         {showProjectsArray.map((project, index) => {
           return (
-            <li key={project.id} className='projects'>
+            <li key={project.id} className="projects">
               <a
                 href={project.link}
                 target="_blank"

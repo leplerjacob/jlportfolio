@@ -153,6 +153,7 @@ code {
 .projects.container .project.list .projects a {
   height: 100%;
   width: 80%;
+  padding: 5px;
 }
 
 #project-1 {
@@ -180,11 +181,12 @@ img.hide {
   display: none;
 }
 
+.details {
+  height: 100%;
+  background: blue;
+}
+
 .details ul {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-}
-
-.details ul li {
-  height: 25%;
 }
