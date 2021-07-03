@@ -19,7 +19,7 @@ const Footer = () => {
     {
       type: 'phone',
       text: (
-        <a href="#" disabled>
+        <a href="/#" disabled>
           (301) 312-7151
         </a>
       ),
@@ -116,7 +116,7 @@ const Footer = () => {
     <div>
       <div className="footer container">
         {social ? social.text : null}
-        <ul>
+        <ul className="icons-group">
           <li>
             <FaRegEnvelope onClick={showEmail} />
           </li>
@@ -133,7 +133,7 @@ const Footer = () => {
             <FaStackOverflow onClick={showSO} />
           </li>
         </ul>
-        {timer === null ? <h3>&copy; Jacob L.</h3> : null}
+        {timer === null ? <h3>&copy; Jacob L. 2020</h3> : null}
       </div>
     </div>
   )

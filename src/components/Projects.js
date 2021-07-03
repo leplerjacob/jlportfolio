@@ -8,7 +8,6 @@ import projSixImg from '../static/img/it-logger-img.JPG'
 import projSevenImg from '../static/img/netflix-clone-img.JPG'
 import projEightImg from '../static/img/phonebookapp-img.JPG'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
-import { logDOM } from '@testing-library/react'
 
 const Projects = () => {
   const projects = [
@@ -117,9 +116,9 @@ const Projects = () => {
   ]
 
   const [showProjectsArray, setShowProjectsArray] = useState(
-    projects.slice(0, 4)
+    projects.slice(4, 8)
   )
-  const [index, setIndex] = useState(true)
+  const [index, setIndex] = useState(false)
 
   const changeProjects = () => {
     if (index) {
@@ -131,71 +130,43 @@ const Projects = () => {
     }
   }
 
-  const mouseOver = ({ target }) => {
-    if (target.parentNode.nodeName.toLowerCase() === 'a') {
-      target.className = 'hide'
-      target.parentNode.childNodes[1].className = 'details'
-    } else if (target.nodeName.toLowerCase() === 'a') {
-      target.childNodes[0].className = 'hide'
-      target.childNodes[1].className = 'details'
+  const checkKey = (e) => {
+    e = e || window.event
+
+    if (e.keyCode === 37) {
+      changeProjects()
+    } else if (e.keyCode === 39) {
+      changeProjects()
     }
-    return
   }
 
-  const mouseLeave = ({ target }) => {
-    if (target.parentNode.parentNode.nodeName.toLowerCase() === 'a') {
-      target.parentNode.parentNode.childNodes[0].className = ''
-      target.parentNode.className = 'details hide'
-    } else if (
-      target.parentNode.parentNode.parentNode.nodeName.toLowerCase() === 'a'
-    ) {
-      target.parentNode.parentNode.className = 'details hide'
-      target.parentNode.parentNode.parentNode.childNodes[0].className = ''
-    } else if (target.nodeName.toLowerCase() === 'a') {
-      target.childNodes[0].className = ''
-      target.childNodes[1].className = 'details hide'
-    } else {
-      target.parentNode.childNodes[0].className = ''
-      target.parentNode.childNodes[1].className = 'details hide'
-    }
-    return
-  }
-
-  const details = (project) => {
-    return (
-      <div className="details hide">
-        <h3>{project.title}</h3>
-        <p>Techs Used:</p>
-        <ul className="project-techs">
-          {project.technologies.map((tech) => {
-              return <li>{tech} </li>
-            })}
-        </ul>
-      </div>
-    )
-  }
+  document.onkeydown = checkKey
 
   return (
-    <div className="projects container">
+    <div className="projects-pane">
       <FaArrowLeft className="arrow" onClick={changeProjects} />
-      <ul className="project list">
-        {showProjectsArray.map((project, index) => {
+      <div className="gallery_container-all">
+        {showProjectsArray.map((project) => {
           return (
-            <li key={project.id} className="projects">
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noreferrer"
-                onMouseEnter={mouseOver}
-                onMouseLeave={mouseLeave}
-              >
-                <img src={project.image} alt="project-1" id="project-1" />
-                {details(project)}
+            <div className="gallery_container" key={project.id}>
+              <a href={project.link} target="_blank" rel="noreferrer">
+                <img src={project.image} alt="project" />
+                <span className="gallery_title">{project.title}</span>
+                <span className="gallery_text">
+                  <span className="project-techs header">
+                    Techs Used: <hr /> <br />
+                  </span>
+                  <ul className="project-techs">
+                    {project.technologies.map((tech, index) => {
+                      return <li key={index}>{tech} </li>
+                    })}
+                  </ul>
+                </span>
               </a>
-            </li>
+            </div>
           )
         })}
-      </ul>
+      </div>
       <FaArrowRight className="arrow" onClick={changeProjects} />
     </div>
   )
